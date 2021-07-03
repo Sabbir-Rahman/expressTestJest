@@ -8,6 +8,7 @@ var logger = require('morgan')
 
 var indexRouter = require('./routers/index')
 var usersRouter = require('./routers/users')
+var todosRouter = require('./routers/todo')
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -17,11 +18,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users',usersRouter)
+app.use('/todos',todosRouter)
 
 
 
-// app.listen(port, () => {
-//     console.log(`Server is running on ${port}`)
-// })
+app.listen(port, () => {
+    console.log(`Server is running on ${port}`)
+})
 
 module.exports = app
